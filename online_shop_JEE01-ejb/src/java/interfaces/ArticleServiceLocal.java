@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package interfaces;
 
-import java.util.List;
-import persistence.Article;
+import javax.ejb.Local;
 
 /**
  *
  * @author Mick_02
  */
-public interface ArticleService {
-	List<Article> getAll();
-	void insertNew(Article article);
-	void updateExist(Article article);
-	
+@Local
+public interface ArticleServiceLocal extends ArticleService {
 }

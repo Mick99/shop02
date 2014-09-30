@@ -8,16 +8,12 @@ package controller;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
-import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import persistence.Article;
-import services.ArticleBean;
-import services.ArticleServiceLocal;
-import services.ArticleServiceRemote;
+import interfaces.ArticleServiceRemote;
 
 /**
  *
