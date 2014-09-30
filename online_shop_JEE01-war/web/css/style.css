@@ -1,0 +1,103 @@
+
+* {
+   margin: 0;
+   padding: 0;
+}
+h1, h2, h3{
+   margin: 18px 0px;
+   font-size: 14px;
+   
+}
+
+h4 {
+   font-size: 24px;
+}
+
+p {
+   margin: 10px 0px;
+}
+body {
+   background-color: #eeeeee; /* Grau Ton*/
+   font-size: 11px;
+   font-family: arial, verdana, helvetica, sans-serif;
+   color: #333; /* Ist wie 333333 */
+      
+}
+#navi {
+   list-style-type: none;
+   padding: 5px 0px;
+   border-bottom: 3px solid #777;
+}
+
+#navi li {
+   display: inline-block;
+   margin: 0px 10px; 
+   
+}
+
+#navi a {
+   font-size: 16px;
+   font-weight: bold;
+   color: #333;
+   text-decoration: none;
+   margin-right: 5px;
+   
+}
+#navi a:hover {
+   color: #f33;
+   
+}
+
+#wrapper {
+   width: 800px;
+   margin: auto;
+   background-color: #ddd;
+   border: 1px solid #777;
+   padding: 30px;
+}
+
+.custAdr {
+ /*   font-size: 14px; 
+   text-decoration: none; */
+	color: #27d4e7;
+	margin-left: 15px;
+}
+
+.custNewAdr {
+ /*   font-size: 14px; 
+	margin-left: 5px;
+   text-decoration: none; */
+	color: #27d4e7;
+}
+
+.filterButton {
+/*   
+   color: #ff77FF;
+   text-decoration: none; */
+   font-size: 18px;
+   background-color: #ff77ff;
+   margin-left: 5px;	
+}
+
+.filterCheckbox {
+/*   font-size: 14px;
+   color: #ff77FF;
+   text-decoration: none; 
+   background-color: #ff77ff; */
+   margin-left: 60px;
+   /* font-size: 14px; */
+}
+
+.AdrOrt {
+   font-size: 26px;
+}
+
+form p {
+   margin: 5px;
+}
+
+label {
+   display: inline-block;
+   width: 80px;
+   
+}
