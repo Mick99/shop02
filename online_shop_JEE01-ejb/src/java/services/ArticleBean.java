@@ -39,12 +39,4 @@ public class ArticleBean implements ArticleServiceLocal, ArticleServiceRemote {
 		em.merge(article);
 	}
 
-  private void test(){
-    
-  }
-
-  private void test2(){
-    
-  }
-
 }
