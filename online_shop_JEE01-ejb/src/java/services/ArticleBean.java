@@ -42,4 +42,9 @@ public class ArticleBean implements ArticleServiceLocal, ArticleServiceRemote {
   private void test(){
     
   }
+
+  private void test2(){
+    
+  }
+
 }
