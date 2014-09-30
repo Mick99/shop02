@@ -23,7 +23,7 @@ public class ArticleController extends AbstractController {
 	
 	private final static String ARTICLE = "java:global/online_shop_JEE01/online_shop_JEE01-ejb/ArticleBean!" + ArticleServiceRemote.class.getName();
 	
-	private ArticleServiceRemote articleService = (ArticleServiceRemote) getBean(ARTICLE);;
+//	private ArticleServiceRemote articleService = (ArticleServiceRemote) getBean(ARTICLE);;
 
 //	@EJB
 //	ArticleBean ab;

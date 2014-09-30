@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logic.Helper;
+import interfaces.*;
 
 //import de.autoverwaltung.model.AbstractMapper;
 
@@ -15,6 +16,7 @@ public abstract class AbstractController {
    protected ServletContext application;
    protected HttpServletRequest request;
    protected HttpServletResponse response;
+   protected ArticleServiceLocal articleService;
    
    public void init(ServletContext application, HttpServletRequest request, HttpServletResponse response) {
       this.application = application;
@@ -42,5 +44,8 @@ public abstract class AbstractController {
    }
 	 */
 
+   public void setBean(ArticleServiceLocal as) {
+     articleService = as;
+   }
    public abstract void indexAction() throws ServletException, IOException;
 }

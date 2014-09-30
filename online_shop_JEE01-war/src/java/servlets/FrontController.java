@@ -6,9 +6,11 @@ package servlets;
 
 import controller.AbstractController;
 import controller.IndexController;
+import interfaces.ArticleServiceLocal;
 import logic.Helper;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,9 @@ public class FrontController extends HttpServlet {
 	 */
 //	private static final long serialVersionUID = 1L;
 
+  @EJB
+  ArticleServiceLocal articleService;
+  
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *
@@ -43,6 +48,7 @@ public class FrontController extends HttpServlet {
 		
 		AbstractController controller = getController(request);
 		controller.init(getServletContext(), request, response);
+    controller.setBean(articleService);
 		Method action = getControllerAction(request, controller);
 		try {
 			System.out.println("++++++++++" + action.toString() + ":::::::::" + controller.toString());
