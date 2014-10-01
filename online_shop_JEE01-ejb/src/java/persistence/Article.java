@@ -89,8 +89,7 @@ public class Article implements Serializable {
 
 	@Override
 	public String toString() {
-
-		return String.format("Id %d: %s = %f%n", id, name, price);
+		return String.format("persistence.Article[%d]: %s = %f%n", id, name, price);
 	}
 
 }

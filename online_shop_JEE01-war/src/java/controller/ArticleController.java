@@ -6,14 +6,10 @@
 package controller;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import persistence.Article;
 import interfaces.ArticleServiceRemote;
+import logic.BeanHelper;
 
 /**
  *
@@ -23,7 +19,7 @@ public class ArticleController extends AbstractController {
 	
 	private final static String ARTICLE = "java:global/online_shop_JEE01/online_shop_JEE01-ejb/ArticleBean!" + ArticleServiceRemote.class.getName();
 	
-	private ArticleServiceRemote articleService = (ArticleServiceRemote) getBean(ARTICLE);;
+	private ArticleServiceRemote articleService = (ArticleServiceRemote) BeanHelper.getBean(ARTICLE);;
 
 //	@EJB
 //	ArticleBean ab;
@@ -94,16 +90,4 @@ public class ArticleController extends AbstractController {
 		forward("/view/standard.jsp");
 		
 	}
-	
-	private Object getBean(String jndiName) {
-		Object bean = null;
-		try {
-			Context context = new InitialContext();
-			bean = context.lookup(jndiName);
-		} catch (NamingException ex) {
-			Logger.getLogger(ArticleController.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		return bean;
-	}
-	
 }
