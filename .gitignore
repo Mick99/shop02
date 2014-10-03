@@ -7,3 +7,6 @@
 /dist/
 /online_shop_JEE01-war/build/
 /online_shop_JEE01-war/dist/
+/ext-jars/
+/online_shop_JEE01-ejb/log4j2/
+/log4j2/

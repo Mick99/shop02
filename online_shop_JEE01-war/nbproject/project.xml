@@ -9,6 +9,10 @@
                 <library dirs="100">
                     <file>${reference.online_shop_JEE01-ejb.dist}</file>
                 </library>
+                <library dirs="200">
+                    <file>${libs.AA_Log4j2_Library.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>

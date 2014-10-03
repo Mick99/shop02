@@ -70,7 +70,7 @@ public class User implements Serializable {
 
   @Override
   public String toString() {
-    return String.format("persistence.User[%d]: %s%n", id, username);
+    return String.format("persistence.User[%d]: %s", id, username);
   }
   
 }
