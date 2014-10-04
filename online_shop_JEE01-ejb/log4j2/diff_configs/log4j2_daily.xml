@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
 	<Properties>
-    <!-- log-path not best idea to set absolute c:/java/projekteshop/shop02. Must be available in AppServer domain!!!
 		<Property name="log-path">log4j2/logs</Property>
-    -->
-    <Property name="log-path">c:/java/projekteshop/shop02/log4j2</Property>
-		<Property name="exception-pattern">%d{ISO8601} %-5p [%t] %c: %C=%M - %m%n</Property>
-		<Property name="message-pattern">%d{HH:mm:ss} %-5p [%t] %c: %C=%M - %m%n</Property>
+		<Property name="exception-pattern">%d{ISO8601} %-5p [%t] %c: %C=%M :: %m%n</Property>
+		<Property name="message-pattern">%d{HH:mm} %-5p [%t] %c: %C=%M :: %m%n</Property>
 	</Properties>
 
 	<Appenders>
 		<RollingFile name="exc-file-log" fileName="${log-path}/Exception.log"
-								 filePattern="${log-path}/Exception-%d{yyyy-MM-dd}.log"> <!--  HH-mm -->
+								 filePattern="${log-path}/Exception-%d{yyyy-MM-dd HH-mm}.log">
 			<PatternLayout>
 				<!-- <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern> -->
 				<pattern>${exception-pattern}</pattern>
@@ -21,7 +18,7 @@
 			</Policies>
 		</RollingFile>
 		<RollingFile name="msg-file-log" fileName="${log-path}/Message.log"
-								 filePattern="${log-path}/Message-%d{yyyy-MM-dd}.log"> <!--  HH-mm -->
+								 filePattern="${log-path}/Message-%d{yyyy-MM-dd HH-mm}.log">
 			<PatternLayout>
 				<!-- <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern> -->
 				<pattern>${message-pattern}</pattern>
@@ -35,18 +32,18 @@
 			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} [%thread] %class=%method - %msg%n"/>
 		</Console>
 		<Console name="msg-console" target="SYSTEM_OUT">
-			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} - %msg%n"/>
+			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} : %msg%n"/>
 		</Console>
 	</Appenders>
 	
 	<Loggers>
 		<!-- level = all trace debug info warn error fatal off -->
 		<Logger name="MSG" level="all" additivity="false">
-			<appender-ref ref="msg-file-log" level="trace"/>
+			<appender-ref ref="msg-file-log" level="info"/>
 			<appender-ref ref="msg-console" level="all"/>
 		</Logger>
 		<Logger name="EXC" level="info" additivity="false">
-			<appender-ref ref="exc-file-log" level="info"/>
+			<appender-ref ref="exc-file-log" level="warn"/>
 			<appender-ref ref="exc-console" level="info"/>
 		</Logger>
 		<Root level="off" additivity="false">

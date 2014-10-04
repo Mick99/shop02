@@ -46,7 +46,7 @@
 			<appender-ref ref="msg-console" level="all"/>
 		</Logger>
 		<Logger name="EXC" level="info" additivity="false">
-			<appender-ref ref="exc-file-log" level="info"/>
+			<appender-ref ref="exc-file-log" level="warn"/>
 			<appender-ref ref="exc-console" level="info"/>
 		</Logger>
 		<Root level="off" additivity="false">

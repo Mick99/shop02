@@ -57,7 +57,6 @@ public class Helper {
 			
 		case ACTION:
 			try {
-				System.out.println("action =====" + pathParts[1]);
 				output.append(pathParts[1]);
 			} catch (Exception e) {
 				output.append("index");

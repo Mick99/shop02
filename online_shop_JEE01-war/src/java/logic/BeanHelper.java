@@ -8,30 +8,27 @@ package logic;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static util.LoggerHelper.*;
 
 /**
  *
  * @author Mick_02
  */
 public class BeanHelper {
-  public static final Logger msg = LogManager.getLogger("MSG");
-  public static final Logger exc = LogManager.getLogger("EXC");
 
   private BeanHelper() {
   }
   public static Object getBean(final Class useBean, final Class useInterface) {
     Object bean = null;
     String jndi = buildJNDI(useBean, useInterface);
-    msg.trace("jndi= " + jndi);
     try {
       Context context = new InitialContext();
       bean = context.lookup(jndi);
     } catch (NamingException ex) {
-      exc.error("JNDI wrong: " + jndi, ex);
+      excLog.error("JNDI wrong: " + jndi, ex);
       throw new RuntimeException();
     }
+    msgLog.trace("BeanWrapper= %s  [JNDI= %s]", bean.toString(), jndi);
     return bean;
   }
   private static String buildJNDI(final Class useBean, final Class useInterface) {

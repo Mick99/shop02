@@ -8,25 +8,23 @@ package controller;
 import interfaces.UserServiceRemote;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import static logic.BeanHelper.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import persistence.User;
 import service.UserBean;
+import static logic.BeanHelper.*;
+import static util.LoggerHelper.*;
 
 /**
  *
  * @author Mick_02
  */
 public class UserController extends AbstractController {
-  public static final Logger msg = LogManager.getLogger("MSG");
-  public static final Logger exc = LogManager.getLogger("EXC");
-  final private UserServiceRemote userService = (UserServiceRemote) getBean(UserBean.class, UserServiceRemote.class);
+  // Weiss derzeit nicht sicher ob "private final UserServiceRemote" gut geht, weil Wrapper?
+  private UserServiceRemote userService = (UserServiceRemote) getBean(UserBean.class, UserServiceRemote.class);
 
   public void loginAction() throws ServletException, IOException {
     String username = request.getParameter("username");
     User user = userService.getUserIfExists(username);
-    msg.trace("Username: " + username);
+    msgLog.trace("Username: " + username);
     if (user != null) {
       request.setAttribute("headline", user.getUsername());
       request.setAttribute("message", ".. und nun ??");

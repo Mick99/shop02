@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static util.LoggerHelper.*;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/front/*"})
 //@WebServlet(name = "FrontController", urlPatterns = {"/front/*", "/admin/*"})
@@ -45,11 +46,9 @@ public class FrontController extends HttpServlet {
 		controller.init(getServletContext(), request, response);
 		Method action = getControllerAction(request, controller);
 		try {
-			System.out.println("++++++++++" + action.toString() + ":::::::::" + controller.toString());
 			action.invoke(controller);
-			
 		} catch (Exception e) {
-			System.out.println("---------");
+      excLog.info("Method not found: %s [in %s]", getControllerAction(request, controller).toString(), controller.toString());
 			controller.indexAction();
 		}
 	}
