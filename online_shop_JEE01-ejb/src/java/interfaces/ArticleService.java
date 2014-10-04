@@ -15,6 +15,6 @@ import persistence.Article;
 public interface ArticleService {
 	List<Article> getAll();
 	void insertNew(Article article);
-	void updateExist(Article article);
+	void updateExists(Article article);
 	
 }

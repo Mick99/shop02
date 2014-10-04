@@ -36,7 +36,7 @@ public class ArticleBean implements ArticleServiceLocal, ArticleServiceRemote {
 	}
 
 	@Override
-	public void updateExist(Article article) {
+	public void updateExists(Article article) {
 		System.out.println("BEAN updateExist:" + article);
 		em.merge(article);
 	}

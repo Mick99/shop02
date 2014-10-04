@@ -62,7 +62,7 @@ public class ArticleController extends AbstractController {
 		if (!hasParseError) {
 			try {
 				if (isUpdate) {
-					articleService.updateExist(article);
+					articleService.updateExists(article);
 				} else {
 					articleService.insertNew(article);
 				}
