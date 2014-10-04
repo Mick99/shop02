@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * Not used may for future release
+ * 
  * @author Mick_02
  */
 @WebServlet(name = "SessionTrack", urlPatterns = {"/SessionTrack"})
