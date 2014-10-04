@@ -10,16 +10,14 @@ import javax.servlet.ServletException;
 import persistence.Article;
 import interfaces.ArticleServiceRemote;
 import logic.BeanHelper;
+import service.ArticleBean;
 
 /**
  *
  * @author Mick_02
  */
 public class ArticleController extends AbstractController {
-	
-	private final static String ARTICLE = "java:global/online_shop_JEE01/online_shop_JEE01-ejb/ArticleBean!" + ArticleServiceRemote.class.getName();
-	
-	private ArticleServiceRemote articleService = (ArticleServiceRemote) BeanHelper.getBean(ARTICLE);;
+	private ArticleServiceRemote articleService = (ArticleServiceRemote) BeanHelper.getBean(ArticleBean.class, ArticleServiceRemote.class);;
 
 //	@EJB
 //	ArticleBean ab;

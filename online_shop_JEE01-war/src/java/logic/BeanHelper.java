@@ -5,29 +5,44 @@
  */
 package logic;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author Mick_02
  */
 public class BeanHelper {
+  public static final Logger msg = LogManager.getLogger("MSG");
+  public static final Logger exc = LogManager.getLogger("EXC");
 
   private BeanHelper() {
   }
-	public static Object getBean(String jndiName) {
-		Object bean = null;
-		try {
-			Context context = new InitialContext();
-			bean = context.lookup(jndiName);
-		} catch (NamingException ex) {
-			Logger.getLogger(BeanHelper.class.getName()).log(Level.SEVERE, null, ex);
-      throw new RuntimeException("JNDI wrong: " + jndiName);
-		}
-		return bean;
-	}
+  public static Object getBean(final Class useBean, final Class useInterface) {
+    Object bean = null;
+    String jndi = buildJNDI(useBean, useInterface);
+    msg.trace("jndi= " + jndi);
+    try {
+      Context context = new InitialContext();
+      bean = context.lookup(jndi);
+    } catch (NamingException ex) {
+      exc.error("JNDI wrong: " + jndi, ex);
+      throw new RuntimeException();
+    }
+    return bean;
+  }
+  private static String buildJNDI(final Class useBean, final Class useInterface) {
+    StringBuilder jndi = new StringBuilder();
+    jndi.append("java:global/online_shop_JEE01/online_shop_JEE01-ejb/");
+    //TODO MW_141004: Full qualified Bean name throws NamingException, why??? May be, its <ejb-name> and not <ejb-class>
+    jndi.append(useBean.getSimpleName());
+    if (useInterface != null) {
+      jndi.append("!");
+      jndi.append(useInterface.getName());
+    }
+    return jndi.toString();
+  }
 }

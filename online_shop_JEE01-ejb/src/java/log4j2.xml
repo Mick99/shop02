@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
 	<Properties>
-    <!-- log-path not best idea to set absolute c:/java/projekteshop/shop02
+    <!-- log-path not best idea to set absolute c:/java/projekteshop/shop02. Must be available in AppServer domain!!!
 		<Property name="log-path">log4j2/logs</Property>
     -->
     <Property name="log-path">c:/java/projekteshop/shop02/log4j2</Property>
-		<Property name="exception-pattern">%d{ISO8601} %-5p [%t] %c: %C=%M :: %m%n</Property>
-		<Property name="message-pattern">%d{HH:mm} %-5p [%t] %c: %C=%M :: %m%n</Property>
+		<Property name="exception-pattern">%d{ISO8601} %-5p [%t] %c: %C=%M - %m%n</Property>
+		<Property name="message-pattern">%d{HH:mm:ss} %-5p [%t] %c: %C=%M - %m%n</Property>
 	</Properties>
 
 	<Appenders>
@@ -35,7 +35,7 @@
 			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} [%thread] %class=%method - %msg%n"/>
 		</Console>
 		<Console name="msg-console" target="SYSTEM_OUT">
-			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} TEST: %msg%n"/>
+			<PatternLayout pattern="[%-5level] %date{HH:mm:ss} - %msg%n"/>
 		</Console>
 	</Appenders>
 	
