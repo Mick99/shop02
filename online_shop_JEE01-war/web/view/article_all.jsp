@@ -10,10 +10,13 @@
 
 <%-- <jsp:include page="filter.jsp" /> --%>
 
-<h2> Entity </h2>
+<h2> Artikel-Liste </h2>
+<form method="post" action="/online_shop_JEE01-war/front/basket/finishorder">
+  <input type="submit" value="Bestellung abschließen"/>
+</form>
 
 <c:forEach items="${entitys}" var="entity">
-	<%@include file="article_single.jsp"%>
+  <%@include file="article_single.jsp"%>
 </c:forEach>
 
 

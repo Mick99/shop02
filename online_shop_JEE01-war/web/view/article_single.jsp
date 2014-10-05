@@ -12,6 +12,7 @@
 
    <a href="${root}/front/controller/update/${entity.id}">EDIT</a>
    <a href="${root}/front/controller/remove/${entity.id}">REMOVE</a>
+   <a href="${root}/front/basket/add/${entity.id}">ADD Artikel</a>
 
 </p>
 
