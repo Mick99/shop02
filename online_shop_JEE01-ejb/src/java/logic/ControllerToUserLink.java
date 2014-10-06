@@ -5,6 +5,7 @@
  */
 package logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistence.User;
 
@@ -15,6 +16,22 @@ import persistence.User;
  */
 public class ControllerToUserLink {
   private User user;
-  private List<Object> controller;
+  // Problem !! I need AbstractController not Object but can not bind -war modul, why?
+  private List<Object> controllers;
   
+  public User getUser() {
+    return user;
+  }
+  public void setUser(User user) {
+    this.user = user;
+  }
+  public List<Object> getControllers() {
+    return controllers;
+  }
+  public void setControllers(Object controller) {
+    if (controllers == null) {
+      controllers = new ArrayList<>();
+    }
+    controllers.add(controller);
+  }
 }
