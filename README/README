@@ -1,6 +1,10 @@
+MW_141006:
 Log4j2: Appache Logger
 - Download Version >2.x
 - New Folder for jars: C:\java\projekteshop\shop02\ext-jars\apache-log4j-2.0.2-bin
 - Tools->Libaries: New Lib. "AA_Log4j2_Library" add ..api.jar + ..core.jar to classpath [or more eg. source]
 - New Folder for Logfiles: C:\java\projekteshop\shop02\log4j2
 - New Folder for other log4j2.xml files: C:\java\projekteshop\shop02\online_shop_JEE01-ejb\log4j2\diff_configs
+MW_141006:
+- Rename Table user -> usertbl
+
