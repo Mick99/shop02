@@ -9,11 +9,13 @@ import controller.IndexController;
 import logic.Helper;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logic.SessionTrackerBean;
 import static util.LoggerHelper.*;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/front/*"})
@@ -25,6 +27,8 @@ public class FrontController extends HttpServlet {
 	 * Compiler warning.
 	 */
 //	private static final long serialVersionUID = 1L;
+  @EJB
+  SessionTrackerBean sessionTracker;
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -55,6 +59,8 @@ public class FrontController extends HttpServlet {
 
 	private AbstractController getController(HttpServletRequest request) {
 		try {
+      sessionTracker.isNewSession(request); // Test
+      // newInstance is the problem
 			return (AbstractController) getControllerClass(request).newInstance();
 		} catch (Exception e) {
 			return new IndexController();
