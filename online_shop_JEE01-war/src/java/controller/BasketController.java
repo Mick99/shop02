@@ -24,6 +24,19 @@ public class BasketController extends AbstractController {
     basketService = WrapperHelperFake.INSTANCE.getWrapper();
   }
   
+    @Override
+  public Class getBean() {
+    return BasketBean.class;
+  }
+  @Override
+  public Class getRemote() {
+    return BasketServiceRemote.class;
+  }
+  @Override
+  public void setProxy(Object proxy) {
+    basketService = (BasketServiceRemote) proxy;
+  }
+
 	public void allAction() throws ServletException, IOException {
     request.setAttribute("entitys", basketService.getAll());
     request.setAttribute("template", "article_all.jsp");

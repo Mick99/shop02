@@ -59,7 +59,7 @@ public class FrontController extends HttpServlet {
 
 	private AbstractController getController(HttpServletRequest request) {
 		try {
-      sessionTracker.isNewSession(request); // Test
+//      sessionTracker.isNewSession(request); // Test
       // newInstance is the problem
 			return (AbstractController) getControllerClass(request).newInstance();
 		} catch (Exception e) {
@@ -70,6 +70,7 @@ public class FrontController extends HttpServlet {
 	private Class getControllerClass(HttpServletRequest request) {
 		Class controller = null;
 		String className = Helper.getFromRequest(request, Helper.Part.CONTROLLER);
+    msgLog.trace("className: %s", className);
 		try {
 			controller = Class.forName(className);
 		} catch (ClassNotFoundException e) {

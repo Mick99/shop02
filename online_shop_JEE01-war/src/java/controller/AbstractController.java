@@ -10,7 +10,7 @@ import logic.Helper;
 
 //import de.autoverwaltung.model.AbstractMapper;
 
-public abstract class AbstractController {
+public abstract class AbstractController implements ProxyIF {
    
    protected ServletContext application;
    protected HttpServletRequest request;

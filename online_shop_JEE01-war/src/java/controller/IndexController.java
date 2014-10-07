@@ -13,6 +13,18 @@ public class IndexController extends AbstractController {
       request.setAttribute("template", "test.jsp");
       forward("/view/standard.jsp");
    }
+  @Override
+  public Class getBean() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+  @Override
+  public Class getRemote() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+  @Override
+  public void setProxy(Object proxy) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
    
    
    

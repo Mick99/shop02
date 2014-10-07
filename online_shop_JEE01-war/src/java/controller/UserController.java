@@ -19,7 +19,20 @@ import static util.LoggerHelper.*;
  */
 public class UserController extends AbstractController {
   // Weiss derzeit nicht sicher ob "private final UserServiceRemote" gut geht, weil Wrapper?
-  private UserServiceRemote userService = (UserServiceRemote) getBean(UserBean.class, UserServiceRemote.class);
+  private UserServiceRemote userService;// = (UserServiceRemote) getBean(UserBean.class, UserServiceRemote.class);
+
+    @Override
+  public Class getBean() {
+    return UserBean.class;
+  }
+  @Override
+  public Class getRemote() {
+    return UserServiceRemote.class;
+  }
+  @Override
+  public void setProxy(Object proxy) {
+    userService = (UserServiceRemote) proxy;
+  }
 
   public void loginAction() throws ServletException, IOException {
     String username = request.getParameter("username");
