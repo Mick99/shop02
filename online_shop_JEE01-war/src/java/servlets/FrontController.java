@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logic.SessionTrackerBean;
+import logic.UserSessionToProxyHelper;
 import static util.LoggerHelper.*;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/front/*"})
@@ -48,6 +49,8 @@ public class FrontController extends HttpServlet {
 		
 		AbstractController controller = getController(request);
 		controller.init(getServletContext(), request, response);
+    UserSessionToProxyHelper us = new UserSessionToProxyHelper();
+    us.clientAction(request, controller);
 		Method action = getControllerAction(request, controller);
 		try {
 			action.invoke(controller);
@@ -70,7 +73,6 @@ public class FrontController extends HttpServlet {
 	private Class getControllerClass(HttpServletRequest request) {
 		Class controller = null;
 		String className = Helper.getFromRequest(request, Helper.Part.CONTROLLER);
-    msgLog.trace("className: %s", className);
 		try {
 			controller = Class.forName(className);
 		} catch (ClassNotFoundException e) {

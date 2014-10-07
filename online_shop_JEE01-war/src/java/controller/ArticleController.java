@@ -11,6 +11,8 @@ import persistence.Article;
 import interfaces.ArticleServiceRemote;
 import logic.BeanHelper;
 import service.ArticleBean;
+import util.LoggerHelper;
+import static util.LoggerHelper.*;
 
 /**
  *
@@ -29,6 +31,7 @@ public class ArticleController extends AbstractController {
   }
   @Override
   public void setProxy(Object proxy) {
+    msgLog.trace("Proxy = %s", proxy);
     articleService = (ArticleServiceRemote) proxy;
   }
 //	@EJB
